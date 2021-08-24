@@ -8,13 +8,8 @@
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/a61e1eaf11.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     
-    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-
 </head>
 <body>
     <div class="top">
@@ -74,30 +69,20 @@
             </form> 
         </header>
     </div>
-    
-    
     <!-- Swiper -->
     <div class="swiper">
         <div class="swiper-wrapper">
-        <div class="swiper-slide">
-            <img src="./img/slider01.png" alt="">
+        <div class="swiper-slide"> <img src="./img/slider01.png" alt=""></div>
+        <div class="swiper-slide"><img src="./img/slider02.png" alt=""></div>
+        <div class="swiper-slide"><img src="./img/slider03.png" alt=""></div>
+        <div class="swiper-slide"><img src="./img/slider04.png" alt=""></div>
         </div>
-        <div class="swiper-slide">
-            <img src="./img/slider02.png" alt="">
-        </div>
-        <div class="swiper-slide">
-            <img src="./img/slider03.png" alt="">
-        </div>
-        <div class="swiper-slide">
-            <img src="./img/slider04.png" alt="">
-        </div>
-        </div>
-      
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
         <!-- Add Arrows -->
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
-    </div>
-    
+    </div> 
     <section>
             <h2>McDonald's LIVE</h2>
             <div class="card_cont">
@@ -182,7 +167,7 @@
              </div>
 
              <button> +</button>
-             <div class="card_cont" id="cont">
+             <div class="card_cont hide" id="cont">
                 <div class="card">
                      <a href="#">
                          <img src="./img/menu10.png" alt="">
@@ -237,7 +222,7 @@
     </footer>
 
 
-
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script>
     // 메뉴 드롭다운//  
@@ -259,14 +244,13 @@
 
     // Initialize Swiper//  
     var swiper = new Swiper('.swiper', {
+      slidesPerView: 1,
       spaceBetween: 30,
-      centeredSlides: true,
       loop: true,
-      autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
       },
-    
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
@@ -274,13 +258,18 @@
     });
 
      // 토글//
-     $(document).ready(function(){
+    $(document).ready(function(){
         $("section>button").click(function(){
-            $("#cont").addClass('active');
-            $("#cont").removeClass('active');
-    
+            if($("#cont").hasClass('show')){
+                $("#cont").addClass('hide').removeClass('show');
+            }else if($('.hide').hasClass('hide')){
+                $('.hide').addClass('show').removeClass('hide');
+            }
         });
-     });
+    });
+
+
+  
     
 
   </script>
